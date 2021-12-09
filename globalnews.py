@@ -68,25 +68,25 @@ def localtimestrf(frmtopt="datetime"):
 def usage():
     ''' Print out string describing model usage and optional arguments.
     '''
-    print "\nRun-time arguments/options:"
-    print "-h OR --help        Show this help text."
-    print "-v                  Run in verbose mode (print out all internal messages)."
-    print "<none>              Run Global NEWS model using vars.cfg config file."
-    print "-a OR --afm         Run Global NEWS 'All-Forms' model *after* all individual"
-    print "                    nutrient forms have been calculated (with allformmodel.py)."
-    print "-g OR --gis         Run GIS pre-processor using gis2tbls.cfg config file."
-    print "-g OR --gis         Run GIS pre-processor using gis2tbls.cfg config file."
-    print "-p OR --postproc    Run post-processing: create new loads variables"
-    print "                    for selected inputs and outputs, all basins."
+    print("\nRun-time arguments/options:")
+    print("-h OR --help        Show this help text.")
+    print("-v                  Run in verbose mode (print out all internal messages).")
+    print("<none>              Run Global NEWS model using vars.cfg config file.")
+    print("-a OR --afm         Run Global NEWS 'All-Forms' model *after* all individual")
+    print("                    nutrient forms have been calculated (with allformmodel.py).")
+    print("-g OR --gis         Run GIS pre-processor using gis2tbls.cfg config file.")
+    print("-g OR --gis         Run GIS pre-processor using gis2tbls.cfg config file.")
+    print("-p OR --postproc    Run post-processing: create new loads variables")
+    print("                    for selected inputs and outputs, all basins.")
 
 
 def main():
     global FLAGS
     
-    print "\n***** Global NEWS modeling Environment (GNE) *****"
-    print "            " + __version__
-    print "            " + localtimestrf()
-    print "      =========================================="
+    print("\n***** Global NEWS modeling Environment (GNE) *****")
+    print("            " + __version__)
+    print("            " + localtimestrf())
+    print("      ==========================================")
 
     # Passing arguments at command-line
     # opts, args = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])
@@ -95,7 +95,7 @@ def main():
         # hmm, not sure what's fed to args if opts already gets the arg value
         opts, args = getopt.getopt(sys.argv[1:], "agphv", ["afm", "gis", "postproc", "help"])
         # extract list of just the "options" (arguments), without arg. values
-        opt = map(itemgetter(0), opts)
+        opt = list(map(itemgetter(0), opts))
     except getopt.GetoptError:
         # print help information, then exit:
         usage()
@@ -122,9 +122,9 @@ def main():
     #elif "-s" in opt or "--smry" in opt:
     #    runsummary() # does not exist yet!
 
-    print "      =========================================="
-    print "***** GNE Run completed *****"
-    print "            %s\n" % localtimestrf()
+    print("      ==========================================")
+    print("***** GNE Run completed *****")
+    print("            %s\n" % localtimestrf())
 
 
 def runmodel():
@@ -133,77 +133,77 @@ def runmodel():
     '''
     global IN, OUT, FLAGS
 
-    print "*** Running Global NEWS Model\n"
+    print("*** Running Global NEWS Model\n")
 
     gncore.cfg_simple_sections("MODEL")
-    print "*** Done reading general model run configurations (cfg_simple_sections()) ***"
-    print "        %s" % localtimestrf("timeonly")
+    print("*** Done reading general model run configurations (cfg_simple_sections()) ***")
+    print("        %s" % localtimestrf("timeonly"))
 
     gncore.PopulateCfgVars(fname_cfg_var, "MODEL")
-    print "*** Done reading variable configurations (PopulateCfgVars()) ***"
-    print "        %s" % localtimestrf("timeonly")
+    print("*** Done reading variable configurations (PopulateCfgVars()) ***")
+    print("        %s" % localtimestrf("timeonly"))
 
     gncore.load_var_arrays(INDOC_TBL, INDOC, IN, OUT)
-    print "*** Done loading input data into memory (load_var_arrays()) ***"
-    print "        %s" % localtimestrf("timeonly")
+    print("*** Done loading input data into memory (load_var_arrays()) ***")
+    print("        %s" % localtimestrf("timeonly"))
 
-    print "\n*** Ready to run models ... ***"
+    print("\n*** Ready to run models ... ***")
     # run only nutrient-form (parameter) subsets specified in vars.cfg, as appropriate
-    params_dissolved = filter(lambda p: p in PGRP['dissolved'], RUN['p'])
-    params_particulate = filter(lambda p: p in PGRP['particulate'], RUN['p'])
-    print "    Nutrient forms (parameters) requested:"
-    print "    " + ",".join(params_dissolved) + "  " + ",".join(params_particulate)
+    params_dissolved = [p for p in RUN['p'] if p in PGRP['dissolved']]
+    params_particulate = [p for p in RUN['p'] if p in PGRP['particulate']]
+    print("    Nutrient forms (parameters) requested:")
+    print("    " + ",".join(params_dissolved) + "  " + ",".join(params_particulate))
     
     if len(params_dissolved):
         import dissolved
         dissolved.model(params_dissolved)
-        print "*** Done with dissolved sub-models ***"
+        print("*** Done with dissolved sub-models ***")
     else:
-        print "*** No dissolved forms (parameters) requested"
-    print "        %s" % localtimestrf("timeonly")
+        print("*** No dissolved forms (parameters) requested")
+    print("        %s" % localtimestrf("timeonly"))
 
     if len(params_particulate):
         import particulate
         particulate.model(params_particulate)
-        print "*** Done with particulate sub-models ***"
+        print("*** Done with particulate sub-models ***")
     else:
-        print "*** No particulate forms (parameters) requested"
-    print "        %s" % localtimestrf("timeonly")
+        print("*** No particulate forms (parameters) requested")
+    print("        %s" % localtimestrf("timeonly"))
 
     if FLAGS['AllFormModel']:
         import allformmodel
         allformmodel.model()
-        print "*** Done with 'All-Form' model ***"
+        print("*** Done with 'All-Form' model ***")
     else:
-        print "*** No 'All-Form' model requested"
-    print "        %s" % localtimestrf("timeonly")
+        print("*** No 'All-Form' model requested")
+    print("        %s" % localtimestrf("timeonly"))
 
 
     gncore.write_var_arrays(OUTDOC_TBL, OUTDOC, OUT)
-    print "*** Done writing output to files (write_var_arrays()) ***"
+    print("*** Done writing output to files (write_var_arrays()) ***")
 
 
 def rungis2tbls():
     global IN, OUT
 
-    print "\n***Running Global NEWS Pre-Processor (GIS > Tables)\n"
+    print("\n***Running Global NEWS Pre-Processor (GIS > Tables)\n")
     # print the time, too?
 
     gncore.cfg_simple_sections("GIS2TBLS")
-    print "*** Done with cfg_simple_sections ***\n"
+    print("*** Done with cfg_simple_sections ***\n")
 
     gncore.PopulateCfgVars(fname_cfg_gis, "GIS2TBLS")
-    print "*** Done with PopulateCfgVars ***\n"
+    print("*** Done with PopulateCfgVars ***\n")
 
     gngis2tbls.LoadBasinIDArea(INDOC_TBL, IN, OUT)
-    print "*** Done with LoadBasinIDArea ***\n"
+    print("*** Done with LoadBasinIDArea ***\n")
     
     # loop through gis input grids for all items in INDOC
     #print "INDOC keys:", INDOC.keys(), "  INDOC_TBL keys:", INDOC_TBL.keys()
     gngis2tbls.CalcBasinStats(INDOC_TBL, INDOC)
-    print "*** Done with CalcBasinStats ***\n"
+    print("*** Done with CalcBasinStats ***\n")
     gngis2tbls.BasinStatsToOUTvarArrays(OUTDOC_TBL, OUTDOC, OUT, IN)
-    print "*** Done with BasinStatsToOUTvarArrays ***\n"
+    print("*** Done with BasinStatsToOUTvarArrays ***\n")
     
     # INSERT HERE A NEW FUNCTION (SEPARATE FILE) TO FREELY DEFINE GENERATED
     # OUT VARS THAT ARE NOT ZONALSTATS. WILL NEED TO MODIFY
@@ -211,46 +211,46 @@ def rungis2tbls():
     # Maybe this new function should be called *only* if there are any
     # "qualifying" OUT vars?? Do that test here, in the new function, or
     # in BasinStatsToOUTvarArrays() and have it return a value?
-    excldvarset = set(INDOC.keys() + ['BasinID', 'BasinArea'])
+    excldvarset = set(list(INDOC.keys()) + ['BasinID', 'BasinArea'])
     genoutset   = set(OUTDOC.keys()).difference(excldvarset)
     if len(genoutset):
         import gis2tbls
         gis2tbls.newoutvars()
-        print "*** Done with gis2tbls ***\n"
+        print("*** Done with gis2tbls ***\n")
     else:
-        print "*** No gis2tbls variables requested\n"
+        print("*** No gis2tbls variables requested\n")
     
     gncore.write_var_arrays(OUTDOC_TBL, OUTDOC, OUT)
-    print "*** Done with write_var_arrays ***\n"
+    print("*** Done with write_var_arrays ***\n")
 
 
 def runpostproc():
     global IN, OUT
 
-    print "\n***Running Post-processing \n"
+    print("\n***Running Post-processing \n")
     # print the time, too?
 
     gncore.cfg_simple_sections("MODEL")
-    print "*** Done with cfg_simple_sections ***\n"
+    print("*** Done with cfg_simple_sections ***\n")
 
     gncore.PopulateCfgVars(fname_cfg_var, "MODEL")
-    print "*** Done with PopulateCfgVars ***\n"
+    print("*** Done with PopulateCfgVars ***\n")
 
     gncore.load_var_arrays(INDOC_TBL, INDOC, IN, OUT)
-    print "*** Done with load_var_arrays ***\n"
+    print("*** Done with load_var_arrays ***\n")
 
     # run only parameter subsets specified in vars.cfg (? is this applicable?)
-    print "  Parameters requested: ", RUN['p']
+    print("  Parameters requested: ", RUN['p'])
 
     if len(RUN['p']):
         import postprocess
         postprocess.processvars(RUN['p'])
-        print "*** Done with postprocess ***\n"
+        print("*** Done with postprocess ***\n")
     else:
-        print "*** No postprocess parameters requested\n"
+        print("*** No postprocess parameters requested\n")
 
     gncore.write_var_arrays(OUTDOC_TBL, OUTDOC, OUT)
-    print "*** Done with write_var_arrays ***\n"
+    print("*** Done with write_var_arrays ***\n")
     
     # NOW WRITE OUT A SEPARATE SUMMARY FILE (*_smry.csv) WITH
     # GLOBAL AND MAYBE REGIONAL (CONTINENTAL, ETC) TOTALS???
