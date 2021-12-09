@@ -1,0 +1,470 @@
+
+***** Global NEWS modeling Environment (GNE) *****
+            $Revision: 2010-01-18$
+            Mon, 18 Jan 2010 14:52:57
+      ==========================================
+*** Running Global NEWS Model
+
+ CAL[DOP][a] = 0.95
+ CAL[DOP][c] = 0.010
+ CAL[DOP][e] = 0.010
+ CAL[DOP][EC] = 15
+ CAL[DIP][a] = 0.85
+ CAL[DIP][c] = 1
+ CAL[DIP][b] = 2
+ CAL[DIP][e] = 0.29
+ CAL[DIP][EC] = 26
+ CAL[DIN][a] = 1
+ CAL[DIN][e] = 0.94
+ CAL[DIN][enat] = 0.10
+ CAL[DON][a] = 0.95
+ CAL[DON][c] = 0.14
+ CAL[DON][e] = 0.01
+ CAL[DON][EC] = 280
+ CAL[DOC][a] = 0.95
+ CAL[DOC][c] = 1
+ CAL[DOC][e] = 1
+ CAL[DOC][EC_wet] = 12475
+ CAL[DOC][EC_dry] = 3883
+ MODELRUN[param_ord] = 1,2,3,4,5,6,7,8,9,10
+ MODELRUN[p] = DIN,DIP,DON,DOP,DOC,DSi,PN,PP,POC
+{'p': ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi', 'PN', 'PP', 'POC'], 'param_ord': [0, 1, 3, 4, 5, 6, 7, 8, 9]}
+*** Done reading general model run configurations (cfg_simple_sections()) ***
+        Time: 14:52:57
+ STRSUBS[fpath_out] = C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\output
+ STRSUBS[fpath_in] = C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs
+ IN[VARS][A] = basins|area|double
+ IN[VARS][WSdif_fix_nat_N] = difflanduse|c0TNfxna|double
+ IN[VARS][frnrslope] = geophysical|FournierSlope|double
+ IN[VARS][KoppenGrpAperc] = basins|KoppenGrpA_prc|double
+ IN[VARS][gslope] = silicainputs|gaez_slope|double
+ IN[VARS][WSdif_ma_N] = difflanduse|c0TNma|double
+ IN[VARS][D_DIP] = reservdisch|c0Ddip0to1|double
+ IN[VARS][wetlndrice] = difflanduse|c0wrpct|double
+ IN[VARS][marggrass] = difflanduse|c0mrgrpct|double
+ IN[VARS][D_DIN] = reservdisch|c0Ddin0to1|double
+ IN[VARS][BasinID] = basins|BASINID|int
+ IN[VARS][RSpntDet_P] = hydropntother|c0TPsewdet|double
+ IN[VARS][WSdif_ex_N] = difflanduse|c0TNex|double
+ IN[VARS][W_pct] = hydropntother|Wpct|double
+ IN[VARS][agric] = difflanduse|c0agrpct|double
+ IN[VARS][WSdif_dep_nat_N] = hydropntother|c0TNdpna|double
+ IN[VARS][frnrprecp] = hydropntother|c0frnrprecp|double
+ IN[VARS][bulkdens] = silicainputs|bulkdens|double
+ IN[VARS][LiClass] = geophysical|LithClass|int
+ IN[VARS][Rnat] = hydropntother|c0R|double
+ IN[VARS][RSpntExc_N] = hydropntother|c0TNsewhum|double
+ IN[VARS][FQrem] = reservdisch|c0FQremSclGEMS|double
+ IN[VARS][hwfrem_N_aspct] = hydropntother|c0TNfrem|double
+ IN[VARS][WSdif_ex_P] = difflanduse|c0TPex|double
+ IN[VARS][WSdif_fe_P] = difflanduse|c0TPfe|double
+ IN[VARS][RSpntExc_P] = hydropntother|c0TPsewhum|double
+ IN[VARS][D_TSS] = reservdisch|c0Dsed0to1|double
+ IN[VARS][WSdif_fix_ant_N] = difflanduse|c0TNfxag|double
+ IN[VARS][WSdif_ma_P] = difflanduse|c0TPma|double
+ IN[VARS][frvolclith] = silicainputs|fr_litho3|double
+ IN[VARS][precip] = silicainputs|precipitation|double
+ IN[VARS][WSdif_dep_ant_N] = difflanduse|c0TNdpag|double
+ IN[VARS][WSdif_fe_N] = difflanduse|c0TNfe|double
+ IN[TBLS][geophysical] = (fpath_in)\preproctbls\LithologySlope_ng.csv|basin
+ IN[TBLS][difflanduse] = (fpath_in)\preproctbls\c00_diffsrc_landuse_ng.csv|basin
+ IN[TBLS][reservdisch] = (fpath_in)\preproctbls\c00_disch_fqrem_reservret_ng.csv|basin
+ IN[TBLS][basins] = (fpath_in)\preproctbls\STN30v6ngNEWS.csv|basin
+ IN[TBLS][silicainputs] = (fpath_in)\preproctbls\DSi_model_inputs.csv|basin
+ IN[TBLS][hydropntother] = (fpath_in)\preproctbls\c00_hydro_pntsrc_other_ng.csv|basin
+hydropntother C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\c00_hydro_pntsrc_other_ng.csv
+basins C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\STN30v6ngNEWS.csv
+silicainputs C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\DSi_model_inputs.csv
+geophysical C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\LithologySlope_ng.csv
+difflanduse C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\c00_diffsrc_landuse_ng.csv
+reservdisch C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\inputs\preproctbls\c00_disch_fqrem_reservret_ng.csv
+docd assignments:  bulkdens None ['silicainputs'] bulkdens double
+docd assignments:  WSdif_fix_nat_N None ['difflanduse'] c0TNfxna double
+docd assignments:  frnrslope None ['geophysical'] FournierSlope double
+docd assignments:  KoppenGrpAperc None ['basins'] KoppenGrpA_prc double
+docd assignments:  gslope None ['silicainputs'] gaez_slope double
+docd assignments:  WSdif_ma_P None ['difflanduse'] c0TPma double
+docd assignments:  agric None ['difflanduse'] c0agrpct double
+docd assignments:  marggrass None ['difflanduse'] c0mrgrpct double
+docd assignments:  D_DIN None ['reservdisch'] c0Ddin0to1 double
+docd assignments:  RSpntDet_P None ['hydropntother'] c0TPsewdet double
+docd assignments:  RSpntExc_N None ['hydropntother'] c0TNsewhum double
+docd assignments:  W_pct None ['hydropntother'] Wpct double
+docd assignments:  wetlndrice None ['difflanduse'] c0wrpct double
+docd assignments:  WSdif_dep_nat_N None ['hydropntother'] c0TNdpna double
+docd assignments:  BasinID None ['basins'] BASINID int
+docd assignments:  A None ['basins'] area double
+docd assignments:  LiClass None ['geophysical'] LithClass int
+docd assignments:  WSdif_dep_ant_N None ['difflanduse'] c0TNdpag double
+docd assignments:  Rnat None ['hydropntother'] c0R double
+docd assignments:  RSpntExc_P None ['hydropntother'] c0TPsewhum double
+docd assignments:  WSdif_ex_N None ['difflanduse'] c0TNex double
+docd assignments:  frvolclith None ['silicainputs'] fr_litho3 double
+docd assignments:  FQrem None ['reservdisch'] c0FQremSclGEMS double
+docd assignments:  hwfrem_N_aspct None ['hydropntother'] c0TNfrem double
+docd assignments:  WSdif_fe_P None ['difflanduse'] c0TPfe double
+docd assignments:  WSdif_ex_P None ['difflanduse'] c0TPex double
+docd assignments:  D_TSS None ['reservdisch'] c0Dsed0to1 double
+docd assignments:  WSdif_fix_ant_N None ['difflanduse'] c0TNfxag double
+docd assignments:  D_DIP None ['reservdisch'] c0Ddip0to1 double
+docd assignments:  WSdif_ma_N None ['difflanduse'] c0TNma double
+docd assignments:  precip None ['silicainputs'] precipitation double
+docd assignments:  frnrprecp None ['hydropntother'] c0frnrprecp double
+docd assignments:  WSdif_fe_N None ['difflanduse'] c0TNfe double
+basins ['KoppenGrpAperc', 'BasinID', 'A']
+difflanduse ['WSdif_fix_nat_N', 'WSdif_ma_P', 'agric', 'marggrass', 'wetlndrice', 'WSdif_dep_ant_N', 'WSdif_ex_N', 'WSdif_fe_P', 'WSdif_ex_P', 'WSdif_fix_ant_N', 'WSdif_ma_N', 'WSdif_fe_N']
+geophysical ['frnrslope', 'LiClass']
+hydropntother ['RSpntDet_P', 'RSpntExc_N', 'W_pct', 'WSdif_dep_nat_N', 'Rnat', 'RSpntExc_P', 'hwfrem_N_aspct', 'frnrprecp']
+reservdisch ['D_DIN', 'FQrem', 'D_TSS', 'D_DIP']
+silicainputs ['bulkdens', 'gslope', 'frvolclith', 'precip']
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS1dif_ant] = outtbl|c0YS1dif_ant_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>FEws] = outtbl|c0FEws_<p>|double|Y
+ OUT[VARS][<p|all>Ld] = outtbl|c0Ld_<p>|double|Y
+ OUT[VARS][<p|DON,DOP>YS2difLch_ant] = outtbl|c0YS2difLch_ant_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS2pntExc] = outtbl|c0YS2pntExc_<p>|double|Y
+ OUT[VARS][<p|DIP>YS2difWth_nat] = outtbl|c0YS2difWth_nat_<p>|double|Y
+ OUT[VARS][<p|dissolved>RSdif_nat] = outtbl|c0RSdif_nat_<p>|double|Y
+ OUT[VARS][<p|DON,DOP>YS2difLch_nat] = outtbl|c0YS2difLch_nat_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS1dif_nat] = outtbl|c0YS1dif_nat_<p>|double|Y
+ OUT[VARS][<p|DIN>YS2difDep_ant] = outtbl|c0YS2difDep_ant_<p>|double|Y
+ OUT[VARS][<p|dissolved>RSdif_ec_ant] = outtbl|c0RSdif_ec_ant_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS1Max] = outtbl|c0YS1Max_<p>|double|Y
+ OUT[VARS][<p|dissolved>FEriv] = outtbl|c0FEriv_<p>|double|Y
+ OUT[VARS][<p|dissolved>RSdif_ec_nat] = outtbl|c0RSdif_ec_nat_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>FEpnt] = outtbl|c0FEpnt_<p>|double|Y
+ OUT[VARS][<p|DIN>FEws_nat] = outtbl|c0FEws_nat_<p>|double|Y
+ OUT[VARS][<p|particulate>TSSpc_pred] = outtbl|c0TSSpc_<p>_pred|double|Y
+ OUT[VARS][<p|dissolved>RSdif_ant] = outtbl|c0RSdif_ant_<p>|double|Y
+ OUT[VARS][<p|DIP>YS2difWth_ant] = outtbl|c0YS2difWth_ant_<p>|double|Y
+ OUT[VARS][<p|DIN>YS2difDep_nat] = outtbl|c0YS2difDep_nat_<p>|double|Y
+ OUT[VARS][Ld_TSS] = outtbl|c0Ld_TSS|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS1pnt] = outtbl|c0YS1pnt_<p>|double|Y
+ OUT[VARS][<p|dissolved>RSpnt] = outtbl|c0RSpnt_<p>|double|Y
+ OUT[VARS][<p|DIN>YS2difFix_nat] = outtbl|c0YS2difFix_nat_<p>|double|Y
+ OUT[VARS][<p|DIP,DOP>YS2pntDet] = outtbl|c0YS2pntDet_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS2difFe_ant] = outtbl|c0YS2difFe_ant_<p>|double|Y
+ OUT[VARS][<p|DOC>YS2difDry] = outtbl|c0YS2difDry_<p>|double|Y
+ OUT[VARS][<p|dissolved>YS2Max] = outtbl|c0YS2Max_<p>|double|Y
+ OUT[VARS][<p|all>Yld] = outtbl|c0Yld_<p>|double|Y
+ OUT[VARS][<p|DIN,DIP,DON,DOP>YS2difMa_ant] = outtbl|c0YS2difMa_ant_<p>|double|Y
+ OUT[VARS][Yld_TSS] = outtbl|c0Yld_TSS|double|Y
+ OUT[VARS][ICEP] = outtbl|c0ICEP|double|Y
+ OUT[VARS][<p|DOC>YS2difWet] = outtbl|c0YS2difWet_<p>|double|Y
+ OUT[VARS][TSSc_pred] = outtbl|c0TSSc_pred|double|Y
+ OUT[VARS][BasinID] = outtbl|basinid|int|Y
+ OUT[VARS][<p|DIN>YS2difFix_ant] = outtbl|c0YS2difFix_ant_<p>|double|Y
+ OUT[TBLS][outtbl] = (fpath_out)\c00_NEWS2Output.csv|basin
+outtbl C:\emilio\rutgers\GlobalNEWS\newsmodel\model\newmodels\NEWS2ms\output\c00_NEWS2Output.csv
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS1dif_ant <p|DIN,DIP,DON,DOP>YS1dif_ant ['outtbl'] c0YS1dif_ant_DIN double
+docd assignments:  DIPYS1dif_ant <p|DIN,DIP,DON,DOP>YS1dif_ant ['outtbl'] c0YS1dif_ant_DIP double
+docd assignments:  DONYS1dif_ant <p|DIN,DIP,DON,DOP>YS1dif_ant ['outtbl'] c0YS1dif_ant_DON double
+docd assignments:  DOPYS1dif_ant <p|DIN,DIP,DON,DOP>YS1dif_ant ['outtbl'] c0YS1dif_ant_DOP double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINFEws <p|DIN,DIP,DON,DOP>FEws ['outtbl'] c0FEws_DIN double
+docd assignments:  DIPFEws <p|DIN,DIP,DON,DOP>FEws ['outtbl'] c0FEws_DIP double
+docd assignments:  DONFEws <p|DIN,DIP,DON,DOP>FEws ['outtbl'] c0FEws_DON double
+docd assignments:  DOPFEws <p|DIN,DIP,DON,DOP>FEws ['outtbl'] c0FEws_DOP double
+p|all ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC', 'PN', 'PP', 'POC'] 
+
+docd assignments:  DINLd <p|all>Ld ['outtbl'] c0Ld_DIN double
+docd assignments:  DIPLd <p|all>Ld ['outtbl'] c0Ld_DIP double
+docd assignments:  DSiLd <p|all>Ld ['outtbl'] c0Ld_DSi double
+docd assignments:  DONLd <p|all>Ld ['outtbl'] c0Ld_DON double
+docd assignments:  DOPLd <p|all>Ld ['outtbl'] c0Ld_DOP double
+docd assignments:  DOCLd <p|all>Ld ['outtbl'] c0Ld_DOC double
+docd assignments:  PNLd <p|all>Ld ['outtbl'] c0Ld_PN double
+docd assignments:  PPLd <p|all>Ld ['outtbl'] c0Ld_PP double
+docd assignments:  POCLd <p|all>Ld ['outtbl'] c0Ld_POC double
+p|DON,DOP ['DON', 'DOP'] 
+
+docd assignments:  DONYS2difLch_ant <p|DON,DOP>YS2difLch_ant ['outtbl'] c0YS2difLch_ant_DON double
+docd assignments:  DOPYS2difLch_ant <p|DON,DOP>YS2difLch_ant ['outtbl'] c0YS2difLch_ant_DOP double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS2pntExc <p|DIN,DIP,DON,DOP>YS2pntExc ['outtbl'] c0YS2pntExc_DIN double
+docd assignments:  DIPYS2pntExc <p|DIN,DIP,DON,DOP>YS2pntExc ['outtbl'] c0YS2pntExc_DIP double
+docd assignments:  DONYS2pntExc <p|DIN,DIP,DON,DOP>YS2pntExc ['outtbl'] c0YS2pntExc_DON double
+docd assignments:  DOPYS2pntExc <p|DIN,DIP,DON,DOP>YS2pntExc ['outtbl'] c0YS2pntExc_DOP double
+docd assignments:  Ld_TSS None ['outtbl'] c0Ld_TSS double
+p|DIP ['DIP'] 
+
+docd assignments:  DIPYS2difWth_nat <p|DIP>YS2difWth_nat ['outtbl'] c0YS2difWth_nat_DIP double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DIN double
+docd assignments:  DIPRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DIP double
+docd assignments:  DSiRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DSi double
+docd assignments:  DONRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DON double
+docd assignments:  DOPRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DOP double
+docd assignments:  DOCRSdif_nat <p|dissolved>RSdif_nat ['outtbl'] c0RSdif_nat_DOC double
+p|DON,DOP ['DON', 'DOP'] 
+
+docd assignments:  DONYS2difLch_nat <p|DON,DOP>YS2difLch_nat ['outtbl'] c0YS2difLch_nat_DON double
+docd assignments:  DOPYS2difLch_nat <p|DON,DOP>YS2difLch_nat ['outtbl'] c0YS2difLch_nat_DOP double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS1dif_nat <p|DIN,DIP,DON,DOP>YS1dif_nat ['outtbl'] c0YS1dif_nat_DIN double
+docd assignments:  DIPYS1dif_nat <p|DIN,DIP,DON,DOP>YS1dif_nat ['outtbl'] c0YS1dif_nat_DIP double
+docd assignments:  DONYS1dif_nat <p|DIN,DIP,DON,DOP>YS1dif_nat ['outtbl'] c0YS1dif_nat_DON double
+docd assignments:  DOPYS1dif_nat <p|DIN,DIP,DON,DOP>YS1dif_nat ['outtbl'] c0YS1dif_nat_DOP double
+p|DIN ['DIN'] 
+
+docd assignments:  DINYS2difDep_ant <p|DIN>YS2difDep_ant ['outtbl'] c0YS2difDep_ant_DIN double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DIN double
+docd assignments:  DIPRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DIP double
+docd assignments:  DSiRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DSi double
+docd assignments:  DONRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DON double
+docd assignments:  DOPRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DOP double
+docd assignments:  DOCRSdif_ec_ant <p|dissolved>RSdif_ec_ant ['outtbl'] c0RSdif_ec_ant_DOC double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS1Max <p|DIN,DIP,DON,DOP>YS1Max ['outtbl'] c0YS1Max_DIN double
+docd assignments:  DIPYS1Max <p|DIN,DIP,DON,DOP>YS1Max ['outtbl'] c0YS1Max_DIP double
+docd assignments:  DONYS1Max <p|DIN,DIP,DON,DOP>YS1Max ['outtbl'] c0YS1Max_DON double
+docd assignments:  DOPYS1Max <p|DIN,DIP,DON,DOP>YS1Max ['outtbl'] c0YS1Max_DOP double
+p|DIP,DOP ['DIP', 'DOP'] 
+
+docd assignments:  DIPYS2pntDet <p|DIP,DOP>YS2pntDet ['outtbl'] c0YS2pntDet_DIP double
+docd assignments:  DOPYS2pntDet <p|DIP,DOP>YS2pntDet ['outtbl'] c0YS2pntDet_DOP double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINFEpnt <p|DIN,DIP,DON,DOP>FEpnt ['outtbl'] c0FEpnt_DIN double
+docd assignments:  DIPFEpnt <p|DIN,DIP,DON,DOP>FEpnt ['outtbl'] c0FEpnt_DIP double
+docd assignments:  DONFEpnt <p|DIN,DIP,DON,DOP>FEpnt ['outtbl'] c0FEpnt_DON double
+docd assignments:  DOPFEpnt <p|DIN,DIP,DON,DOP>FEpnt ['outtbl'] c0FEpnt_DOP double
+p|DIN ['DIN'] 
+
+docd assignments:  DINFEws_nat <p|DIN>FEws_nat ['outtbl'] c0FEws_nat_DIN double
+p|particulate ['POC', 'PN', 'PP'] 
+
+docd assignments:  PNTSSpc_pred <p|particulate>TSSpc_pred ['outtbl'] c0TSSpc_PN_pred double
+docd assignments:  PPTSSpc_pred <p|particulate>TSSpc_pred ['outtbl'] c0TSSpc_PP_pred double
+docd assignments:  POCTSSpc_pred <p|particulate>TSSpc_pred ['outtbl'] c0TSSpc_POC_pred double
+p|DIP ['DIP'] 
+
+docd assignments:  DIPYS2difWth_ant <p|DIP>YS2difWth_ant ['outtbl'] c0YS2difWth_ant_DIP double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DIN double
+docd assignments:  DIPFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DIP double
+docd assignments:  DSiFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DSi double
+docd assignments:  DONFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DON double
+docd assignments:  DOPFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DOP double
+docd assignments:  DOCFEriv <p|dissolved>FEriv ['outtbl'] c0FEriv_DOC double
+p|DIN ['DIN'] 
+
+docd assignments:  DINYS2difDep_nat <p|DIN>YS2difDep_nat ['outtbl'] c0YS2difDep_nat_DIN double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS1pnt <p|DIN,DIP,DON,DOP>YS1pnt ['outtbl'] c0YS1pnt_DIN double
+docd assignments:  DIPYS1pnt <p|DIN,DIP,DON,DOP>YS1pnt ['outtbl'] c0YS1pnt_DIP double
+docd assignments:  DONYS1pnt <p|DIN,DIP,DON,DOP>YS1pnt ['outtbl'] c0YS1pnt_DON double
+docd assignments:  DOPYS1pnt <p|DIN,DIP,DON,DOP>YS1pnt ['outtbl'] c0YS1pnt_DOP double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DIN double
+docd assignments:  DIPRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DIP double
+docd assignments:  DSiRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DSi double
+docd assignments:  DONRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DON double
+docd assignments:  DOPRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DOP double
+docd assignments:  DOCRSpnt <p|dissolved>RSpnt ['outtbl'] c0RSpnt_DOC double
+p|DIN ['DIN'] 
+
+docd assignments:  DINYS2difFix_nat <p|DIN>YS2difFix_nat ['outtbl'] c0YS2difFix_nat_DIN double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DIN double
+docd assignments:  DIPRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DIP double
+docd assignments:  DSiRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DSi double
+docd assignments:  DONRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DON double
+docd assignments:  DOPRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DOP double
+docd assignments:  DOCRSdif_ec_nat <p|dissolved>RSdif_ec_nat ['outtbl'] c0RSdif_ec_nat_DOC double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS2difFe_ant <p|DIN,DIP,DON,DOP>YS2difFe_ant ['outtbl'] c0YS2difFe_ant_DIN double
+docd assignments:  DIPYS2difFe_ant <p|DIN,DIP,DON,DOP>YS2difFe_ant ['outtbl'] c0YS2difFe_ant_DIP double
+docd assignments:  DONYS2difFe_ant <p|DIN,DIP,DON,DOP>YS2difFe_ant ['outtbl'] c0YS2difFe_ant_DON double
+docd assignments:  DOPYS2difFe_ant <p|DIN,DIP,DON,DOP>YS2difFe_ant ['outtbl'] c0YS2difFe_ant_DOP double
+p|DOC ['DOC'] 
+
+docd assignments:  DOCYS2difDry <p|DOC>YS2difDry ['outtbl'] c0YS2difDry_DOC double
+docd assignments:  ICEP None ['outtbl'] c0ICEP double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DIN double
+docd assignments:  DIPYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DIP double
+docd assignments:  DSiYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DSi double
+docd assignments:  DONYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DON double
+docd assignments:  DOPYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DOP double
+docd assignments:  DOCYS2Max <p|dissolved>YS2Max ['outtbl'] c0YS2Max_DOC double
+p|all ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC', 'PN', 'PP', 'POC'] 
+
+docd assignments:  DINYld <p|all>Yld ['outtbl'] c0Yld_DIN double
+docd assignments:  DIPYld <p|all>Yld ['outtbl'] c0Yld_DIP double
+docd assignments:  DSiYld <p|all>Yld ['outtbl'] c0Yld_DSi double
+docd assignments:  DONYld <p|all>Yld ['outtbl'] c0Yld_DON double
+docd assignments:  DOPYld <p|all>Yld ['outtbl'] c0Yld_DOP double
+docd assignments:  DOCYld <p|all>Yld ['outtbl'] c0Yld_DOC double
+docd assignments:  PNYld <p|all>Yld ['outtbl'] c0Yld_PN double
+docd assignments:  PPYld <p|all>Yld ['outtbl'] c0Yld_PP double
+docd assignments:  POCYld <p|all>Yld ['outtbl'] c0Yld_POC double
+p|DIN,DIP,DON,DOP ['DIN', 'DIP', 'DON', 'DOP'] 
+
+docd assignments:  DINYS2difMa_ant <p|DIN,DIP,DON,DOP>YS2difMa_ant ['outtbl'] c0YS2difMa_ant_DIN double
+docd assignments:  DIPYS2difMa_ant <p|DIN,DIP,DON,DOP>YS2difMa_ant ['outtbl'] c0YS2difMa_ant_DIP double
+docd assignments:  DONYS2difMa_ant <p|DIN,DIP,DON,DOP>YS2difMa_ant ['outtbl'] c0YS2difMa_ant_DON double
+docd assignments:  DOPYS2difMa_ant <p|DIN,DIP,DON,DOP>YS2difMa_ant ['outtbl'] c0YS2difMa_ant_DOP double
+docd assignments:  Yld_TSS None ['outtbl'] c0Yld_TSS double
+p|dissolved ['DIN', 'DIP', 'DIC', 'DSi', 'DON', 'DOP', 'DOC'] 
+
+docd assignments:  DINRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DIN double
+docd assignments:  DIPRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DIP double
+docd assignments:  DSiRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DSi double
+docd assignments:  DONRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DON double
+docd assignments:  DOPRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DOP double
+docd assignments:  DOCRSdif_ant <p|dissolved>RSdif_ant ['outtbl'] c0RSdif_ant_DOC double
+p|DOC ['DOC'] 
+
+docd assignments:  DOCYS2difWet <p|DOC>YS2difWet ['outtbl'] c0YS2difWet_DOC double
+docd assignments:  TSSc_pred None ['outtbl'] c0TSSc_pred double
+docd assignments:  BasinID None ['outtbl'] basinid int
+p|DIN ['DIN'] 
+
+docd assignments:  DINYS2difFix_ant <p|DIN>YS2difFix_ant ['outtbl'] c0YS2difFix_ant_DIN double
+outtbl ['DINYS1dif_ant', 'DIPYS1dif_ant', 'DONYS1dif_ant', 'DOPYS1dif_ant', 'DINFEws', 'DIPFEws', 'DONFEws', 'DOPFEws', 'DINLd', 'DIPLd', 'DSiLd', 'DONLd', 'DOPLd', 'DOCLd', 'PNLd', 'PPLd', 'POCLd', 'DONYS2difLch_ant', 'DOPYS2difLch_ant', 'DINYS2pntExc', 'DIPYS2pntExc', 'DONYS2pntExc', 'DOPYS2pntExc', 'Ld_TSS', 'DIPYS2difWth_nat', 'DINRSdif_nat', 'DIPRSdif_nat', 'DSiRSdif_nat', 'DONRSdif_nat', 'DOPRSdif_nat', 'DOCRSdif_nat', 'DONYS2difLch_nat', 'DOPYS2difLch_nat', 'DINYS1dif_nat', 'DIPYS1dif_nat', 'DONYS1dif_nat', 'DOPYS1dif_nat', 'DINYS2difDep_ant', 'DINRSdif_ec_ant', 'DIPRSdif_ec_ant', 'DSiRSdif_ec_ant', 'DONRSdif_ec_ant', 'DOPRSdif_ec_ant', 'DOCRSdif_ec_ant', 'DINYS1Max', 'DIPYS1Max', 'DONYS1Max', 'DOPYS1Max', 'DIPYS2pntDet', 'DOPYS2pntDet', 'DINFEpnt', 'DIPFEpnt', 'DONFEpnt', 'DOPFEpnt', 'DINFEws_nat', 'PNTSSpc_pred', 'PPTSSpc_pred', 'POCTSSpc_pred', 'DIPYS2difWth_ant', 'DINFEriv', 'DIPFEriv', 'DSiFEriv', 'DONFEriv', 'DOPFEriv', 'DOCFEriv', 'DINYS2difDep_nat', 'DINYS1pnt', 'DIPYS1pnt', 'DONYS1pnt', 'DOPYS1pnt', 'DINRSpnt', 'DIPRSpnt', 'DSiRSpnt', 'DONRSpnt', 'DOPRSpnt', 'DOCRSpnt', 'DINYS2difFix_nat', 'DINRSdif_ec_nat', 'DIPRSdif_ec_nat', 'DSiRSdif_ec_nat', 'DONRSdif_ec_nat', 'DOPRSdif_ec_nat', 'DOCRSdif_ec_nat', 'DINYS2difFe_ant', 'DIPYS2difFe_ant', 'DONYS2difFe_ant', 'DOPYS2difFe_ant', 'DOCYS2difDry', 'ICEP', 'DINYS2Max', 'DIPYS2Max', 'DSiYS2Max', 'DONYS2Max', 'DOPYS2Max', 'DOCYS2Max', 'DINYld', 'DIPYld', 'DSiYld', 'DONYld', 'DOPYld', 'DOCYld', 'PNYld', 'PPYld', 'POCYld', 'DINYS2difMa_ant', 'DIPYS2difMa_ant', 'DONYS2difMa_ant', 'DOPYS2difMa_ant', 'Yld_TSS', 'DINRSdif_ant', 'DIPRSdif_ant', 'DSiRSdif_ant', 'DONRSdif_ant', 'DOPRSdif_ant', 'DOCRSdif_ant', 'DOCYS2difWet', 'TSSc_pred', 'BasinID', 'DINYS2difFix_ant']
+genvars:  <p|DIN,DIP,DON,DOP>YS1dif_ant ['DON', 'DIN', 'DIP', 'DOP'] ['DONYS1dif_ant', 'DINYS1dif_ant', 'DIPYS1dif_ant', 'DOPYS1dif_ant']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS1dif_ant ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS1dif_ant', 'DIPYS1dif_ant', 'DONYS1dif_ant', 'DOPYS1dif_ant']
+genvars:  <p|DIN,DIP,DON,DOP>FEws ['DOP', 'DON', 'DIN', 'DIP'] ['DOPFEws', 'DONFEws', 'DINFEws', 'DIPFEws']
+genvars sorted:  <p|DIN,DIP,DON,DOP>FEws ['DIN', 'DIP', 'DON', 'DOP'] ['DINFEws', 'DIPFEws', 'DONFEws', 'DOPFEws']
+genvars:  <p|DON,DOP>YS2difLch_nat ['DON', 'DOP'] ['DONYS2difLch_nat', 'DOPYS2difLch_nat']
+genvars sorted:  <p|DON,DOP>YS2difLch_nat ['DON', 'DOP'] ['DONYS2difLch_nat', 'DOPYS2difLch_nat']
+genvars:  <p|DON,DOP>YS2difLch_ant ['DON', 'DOP'] ['DONYS2difLch_ant', 'DOPYS2difLch_ant']
+genvars sorted:  <p|DON,DOP>YS2difLch_ant ['DON', 'DOP'] ['DONYS2difLch_ant', 'DOPYS2difLch_ant']
+genvars:  <p|DIN,DIP,DON,DOP>YS2pntExc ['DIP', 'DON', 'DIN', 'DOP'] ['DIPYS2pntExc', 'DONYS2pntExc', 'DINYS2pntExc', 'DOPYS2pntExc']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS2pntExc ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS2pntExc', 'DIPYS2pntExc', 'DONYS2pntExc', 'DOPYS2pntExc']
+genvars:  <p|DIP>YS2difWth_nat ['DIP'] ['DIPYS2difWth_nat']
+genvars sorted:  <p|DIP>YS2difWth_nat ['DIP'] ['DIPYS2difWth_nat']
+genvars:  <p|dissolved>RSdif_nat ['DIP', 'DSi', 'DON', 'DOC', 'DIN', 'DOP'] ['DIPRSdif_nat', 'DSiRSdif_nat', 'DONRSdif_nat', 'DOCRSdif_nat', 'DINRSdif_nat', 'DOPRSdif_nat']
+genvars sorted:  <p|dissolved>RSdif_nat ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINRSdif_nat', 'DIPRSdif_nat', 'DONRSdif_nat', 'DOPRSdif_nat', 'DOCRSdif_nat', 'DSiRSdif_nat']
+genvars:  <p|all>Ld ['POC', 'PP', 'DON', 'DSi', 'DIP', 'PN', 'DIN', 'DOP', 'DOC'] ['POCLd', 'PPLd', 'DONLd', 'DSiLd', 'DIPLd', 'PNLd', 'DINLd', 'DOPLd', 'DOCLd']
+genvars sorted:  <p|all>Ld ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi', 'PN', 'PP', 'POC'] ['DINLd', 'DIPLd', 'DONLd', 'DOPLd', 'DOCLd', 'DSiLd', 'PNLd', 'PPLd', 'POCLd']
+genvars:  <p|DIN,DIP,DON,DOP>YS1dif_nat ['DIP', 'DIN', 'DOP', 'DON'] ['DIPYS1dif_nat', 'DINYS1dif_nat', 'DOPYS1dif_nat', 'DONYS1dif_nat']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS1dif_nat ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS1dif_nat', 'DIPYS1dif_nat', 'DONYS1dif_nat', 'DOPYS1dif_nat']
+genvars:  <p|DIN>YS2difDep_ant ['DIN'] ['DINYS2difDep_ant']
+genvars sorted:  <p|DIN>YS2difDep_ant ['DIN'] ['DINYS2difDep_ant']
+genvars:  <p|dissolved>RSdif_ec_ant ['DOP', 'DIP', 'DSi', 'DON', 'DOC', 'DIN'] ['DOPRSdif_ec_ant', 'DIPRSdif_ec_ant', 'DSiRSdif_ec_ant', 'DONRSdif_ec_ant', 'DOCRSdif_ec_ant', 'DINRSdif_ec_ant']
+genvars sorted:  <p|dissolved>RSdif_ec_ant ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINRSdif_ec_ant', 'DIPRSdif_ec_ant', 'DONRSdif_ec_ant', 'DOPRSdif_ec_ant', 'DOCRSdif_ec_ant', 'DSiRSdif_ec_ant']
+genvars:  <p|DIN,DIP,DON,DOP>YS1Max ['DON', 'DIP', 'DIN', 'DOP'] ['DONYS1Max', 'DIPYS1Max', 'DINYS1Max', 'DOPYS1Max']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS1Max ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS1Max', 'DIPYS1Max', 'DONYS1Max', 'DOPYS1Max']
+genvars:  <p|DIN,DIP,DON,DOP>YS2difFe_ant ['DOP', 'DIN', 'DON', 'DIP'] ['DOPYS2difFe_ant', 'DINYS2difFe_ant', 'DONYS2difFe_ant', 'DIPYS2difFe_ant']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS2difFe_ant ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS2difFe_ant', 'DIPYS2difFe_ant', 'DONYS2difFe_ant', 'DOPYS2difFe_ant']
+genvars:  <p|DIN,DIP,DON,DOP>FEpnt ['DIN', 'DON', 'DOP', 'DIP'] ['DINFEpnt', 'DONFEpnt', 'DOPFEpnt', 'DIPFEpnt']
+genvars sorted:  <p|DIN,DIP,DON,DOP>FEpnt ['DIN', 'DIP', 'DON', 'DOP'] ['DINFEpnt', 'DIPFEpnt', 'DONFEpnt', 'DOPFEpnt']
+genvars:  <p|DIN>FEws_nat ['DIN'] ['DINFEws_nat']
+genvars sorted:  <p|DIN>FEws_nat ['DIN'] ['DINFEws_nat']
+genvars:  <p|particulate>TSSpc_pred ['PP', 'POC', 'PN'] ['PPTSSpc_pred', 'POCTSSpc_pred', 'PNTSSpc_pred']
+genvars sorted:  <p|particulate>TSSpc_pred ['PN', 'PP', 'POC'] ['PNTSSpc_pred', 'PPTSSpc_pred', 'POCTSSpc_pred']
+genvars:  <p|DIP,DOP>YS2pntDet ['DOP', 'DIP'] ['DOPYS2pntDet', 'DIPYS2pntDet']
+genvars sorted:  <p|DIP,DOP>YS2pntDet ['DIP', 'DOP'] ['DIPYS2pntDet', 'DOPYS2pntDet']
+genvars:  <p|DIP>YS2difWth_ant ['DIP'] ['DIPYS2difWth_ant']
+genvars sorted:  <p|DIP>YS2difWth_ant ['DIP'] ['DIPYS2difWth_ant']
+genvars:  <p|DIN>YS2difDep_nat ['DIN'] ['DINYS2difDep_nat']
+genvars sorted:  <p|DIN>YS2difDep_nat ['DIN'] ['DINYS2difDep_nat']
+genvars:  <p|dissolved>FEriv ['DOP', 'DON', 'DIP', 'DSi', 'DOC', 'DIN'] ['DOPFEriv', 'DONFEriv', 'DIPFEriv', 'DSiFEriv', 'DOCFEriv', 'DINFEriv']
+genvars sorted:  <p|dissolved>FEriv ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINFEriv', 'DIPFEriv', 'DONFEriv', 'DOPFEriv', 'DOCFEriv', 'DSiFEriv']
+genvars:  <p|DIN,DIP,DON,DOP>YS1pnt ['DIN', 'DOP', 'DON', 'DIP'] ['DINYS1pnt', 'DOPYS1pnt', 'DONYS1pnt', 'DIPYS1pnt']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS1pnt ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS1pnt', 'DIPYS1pnt', 'DONYS1pnt', 'DOPYS1pnt']
+genvars:  <p|dissolved>RSpnt ['DSi', 'DOP', 'DOC', 'DIP', 'DIN', 'DON'] ['DSiRSpnt', 'DOPRSpnt', 'DOCRSpnt', 'DIPRSpnt', 'DINRSpnt', 'DONRSpnt']
+genvars sorted:  <p|dissolved>RSpnt ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINRSpnt', 'DIPRSpnt', 'DONRSpnt', 'DOPRSpnt', 'DOCRSpnt', 'DSiRSpnt']
+genvars:  <p|DIN>YS2difFix_nat ['DIN'] ['DINYS2difFix_nat']
+genvars sorted:  <p|DIN>YS2difFix_nat ['DIN'] ['DINYS2difFix_nat']
+genvars:  <p|dissolved>RSdif_ec_nat ['DOP', 'DIP', 'DON', 'DSi', 'DOC', 'DIN'] ['DOPRSdif_ec_nat', 'DIPRSdif_ec_nat', 'DONRSdif_ec_nat', 'DSiRSdif_ec_nat', 'DOCRSdif_ec_nat', 'DINRSdif_ec_nat']
+genvars sorted:  <p|dissolved>RSdif_ec_nat ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINRSdif_ec_nat', 'DIPRSdif_ec_nat', 'DONRSdif_ec_nat', 'DOPRSdif_ec_nat', 'DOCRSdif_ec_nat', 'DSiRSdif_ec_nat']
+genvars:  <p|DOC>YS2difDry ['DOC'] ['DOCYS2difDry']
+genvars sorted:  <p|DOC>YS2difDry ['DOC'] ['DOCYS2difDry']
+genvars:  <p|dissolved>YS2Max ['DIP', 'DOC', 'DSi', 'DOP', 'DIN', 'DON'] ['DIPYS2Max', 'DOCYS2Max', 'DSiYS2Max', 'DOPYS2Max', 'DINYS2Max', 'DONYS2Max']
+genvars sorted:  <p|dissolved>YS2Max ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINYS2Max', 'DIPYS2Max', 'DONYS2Max', 'DOPYS2Max', 'DOCYS2Max', 'DSiYS2Max']
+genvars:  <p|all>Yld ['DIP', 'POC', 'DON', 'DIN', 'PP', 'DOC', 'DOP', 'PN', 'DSi'] ['DIPYld', 'POCYld', 'DONYld', 'DINYld', 'PPYld', 'DOCYld', 'DOPYld', 'PNYld', 'DSiYld']
+genvars sorted:  <p|all>Yld ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi', 'PN', 'PP', 'POC'] ['DINYld', 'DIPYld', 'DONYld', 'DOPYld', 'DOCYld', 'DSiYld', 'PNYld', 'PPYld', 'POCYld']
+genvars:  <p|DIN,DIP,DON,DOP>YS2difMa_ant ['DON', 'DIN', 'DIP', 'DOP'] ['DONYS2difMa_ant', 'DINYS2difMa_ant', 'DIPYS2difMa_ant', 'DOPYS2difMa_ant']
+genvars sorted:  <p|DIN,DIP,DON,DOP>YS2difMa_ant ['DIN', 'DIP', 'DON', 'DOP'] ['DINYS2difMa_ant', 'DIPYS2difMa_ant', 'DONYS2difMa_ant', 'DOPYS2difMa_ant']
+genvars:  <p|dissolved>RSdif_ant ['DIP', 'DIN', 'DON', 'DOP', 'DSi', 'DOC'] ['DIPRSdif_ant', 'DINRSdif_ant', 'DONRSdif_ant', 'DOPRSdif_ant', 'DSiRSdif_ant', 'DOCRSdif_ant']
+genvars sorted:  <p|dissolved>RSdif_ant ['DIN', 'DIP', 'DON', 'DOP', 'DOC', 'DSi'] ['DINRSdif_ant', 'DIPRSdif_ant', 'DONRSdif_ant', 'DOPRSdif_ant', 'DOCRSdif_ant', 'DSiRSdif_ant']
+genvars:  <p|DOC>YS2difWet ['DOC'] ['DOCYS2difWet']
+genvars sorted:  <p|DOC>YS2difWet ['DOC'] ['DOCYS2difWet']
+genvars:  <p|DIN>YS2difFix_ant ['DIN'] ['DINYS2difFix_ant']
+genvars sorted:  <p|DIN>YS2difFix_ant ['DIN'] ['DINYS2difFix_ant']
+*** Done reading variable configurations (PopulateCfgVars()) ***
+        Time: 14:52:57
+  Number of basins to be processed: 6081
+tbl_fld_var:  {'c0TPsewdet': 'RSpntDet_P', 'Wpct': 'W_pct', 'c0frnrprecp': 'frnrprecp', 'c0TNsewhum': 'RSpntExc_N', 'c0TNdpna': 'WSdif_dep_nat_N', 'c0TPsewhum': 'RSpntExc_P', 'c0R': 'Rnat', 'c0TNfrem': 'hwfrem_N_aspct'}
+    RSpntDet_P ( 6081 ): [ 0.09443463  0.79225922  0.0413666  ...,  0.          0.          0.        ]
+    RSpntExc_N ( 6081 ): [  2.08398676  17.48510361   0.67554402 ...,   0.           0.           0.        ]
+    W_pct ( 6081 ): [ 7.98304033  3.51374698  7.91564608 ...,  0.          0.          0.30555525]
+    WSdif_dep_nat_N ( 6081 ): [ 434.66845703  223.40412903  629.07678223 ...,  361.00027466  361.00027466
+  361.00027466]
+    Rnat ( 6081 ): [ 858.76544189  132.73008728  482.04998779 ...,    0.            0.            0.        ]
+    RSpntExc_P ( 6081 ): [ 0.34726101  2.91425824  0.11261494 ...,  0.          0.          0.        ]
+    hwfrem_N_aspct ( 6081 ): [ 7.36734343  1.43760586  0.14644343 ...,  0.          0.          0.        ]
+    frnrprecp ( 6081 ): [ 7.27878332  2.91684866  5.68664169 ...,  0.35042712  0.26612952
+  0.22288923]
+tbl_fld_var:  {'area': 'A', 'KoppenGrpA_prc': 'KoppenGrpAperc'}
+    KoppenGrpAperc ( 6081 ): [ 92.90526581  30.75735474  93.50914764 ...,   0.           0.           0.        ]
+    BasinID ( 6081 ): [   1    2    3 ..., 6290 6291 6292]
+    A ( 6081 ): [  5.84687000e+06   3.82159000e+06   3.69443000e+06 ...,   3.62899994e+02
+   3.62899994e+02   3.62899994e+02]
+tbl_fld_var:  {'bulkdens': 'bulkdens', 'gaez_slope': 'gslope', 'precipitation': 'precip', 'fr_litho3': 'frvolclith'}
+    bulkdens ( 6081 ): [ 1.36428  1.48423  1.38643 ...,  0.       0.       0.     ]
+    gslope ( 6081 ): [  6.37362  10.5738    8.41399 ...,   0.        0.        0.     ]
+    frvolclith ( 6081 ): [ 0.049792  0.061627  0.003535 ...,  0.        0.        0.      ]
+    precip ( 6081 ): [ 5.73411  1.53957  4.19393 ...,  0.       0.       0.     ]
+tbl_fld_var:  {'LithClass': 'LiClass', 'FournierSlope': 'frnrslope'}
+    frnrslope ( 6081 ): [   7.05599748   13.61634817   10.55491646 ...,   23.00000039  200.0000034
+  139.0000023 ]
+    LiClass ( 6081 ): [3 4 1 ..., 1 1 1]
+tbl_fld_var:  {'c0TPfe': 'WSdif_fe_P', 'c0TNfxag': 'WSdif_fix_ant_N', 'c0TNfxna': 'WSdif_fix_nat_N', 'c0TNex': 'WSdif_ex_N', 'c0TNdpag': 'WSdif_dep_ant_N', 'c0mrgrpct': 'marggrass', 'c0TPex': 'WSdif_ex_P', 'c0TPma': 'WSdif_ma_P', 'c0TNma': 'WSdif_ma_N', 'c0wrpct': 'wetlndrice', 'c0agrpct': 'agric', 'c0TNfe': 'WSdif_fe_N'}
+    WSdif_fix_nat_N ( 6081 ): [ 2189.49633789   737.0178833   2182.16064453 ...,     0.             0.
+     0.        ]
+    WSdif_ma_P ( 6081 ): [  29.20383263  195.6005249    14.50264359 ...,    0.            0.            0.        ]
+    agric ( 6081 ): [  8.61500263  42.07358551  15.18743038 ...,   0.           0.           0.        ]
+    marggrass ( 6081 ): [ 0.15294269  3.28099036  0.         ...,  0.          0.          0.        ]
+    wetlndrice ( 6081 ): [ 0.03382459  0.20522165  0.03563473 ...,  0.          0.          0.        ]
+    WSdif_dep_ant_N ( 6081 ): [  39.57159805  291.45721436  106.11109161 ...,    0.            0.            0.        ]
+    WSdif_ex_N ( 6081 ): [ 137.02476502  766.68609619   78.24887848 ...,    0.            0.            0.        ]
+    WSdif_fe_P ( 6081 ): [ 11.73891354  16.45689392   0.32419074 ...,   0.           0.           0.        ]
+    WSdif_ex_P ( 6081 ): [  23.09885406  126.68758392   12.89102745 ...,    0.            0.            0.        ]
+    WSdif_fix_ant_N ( 6081 ): [  44.211689    247.39886475   83.87410736 ...,    0.            0.            0.        ]
+    WSdif_ma_N ( 6081 ): [  165.40319824  1154.86743164    83.11269379 ...,     0.             0.
+     0.        ]
+    WSdif_fe_N ( 6081 ): [  41.32826614  163.00831604    1.86490738 ...,    0.            0.            0.        ]
+tbl_fld_var:  {'c0Ddip0to1': 'D_DIP', 'c0Ddin0to1': 'D_DIN', 'c0Dsed0to1': 'D_TSS', 'c0FQremSclGEMS': 'FQrem'}
+    D_DIN ( 6081 ): [  1.40000000e-04   2.43810000e-01   6.35100000e-02 ...,   0.00000000e+00
+   0.00000000e+00   0.00000000e+00]
+    FQrem ( 6081 ): [  2.90000000e-04   9.96390000e-01   1.80000000e-04 ...,   0.00000000e+00
+   0.00000000e+00   0.00000000e+00]
+    D_TSS ( 6081 ): [  3.20000000e-04   9.36040000e-01   6.07980000e-01 ...,   0.00000000e+00
+   0.00000000e+00   0.00000000e+00]
+    D_DIP ( 6081 ): [  2.80000000e-04   1.00000000e+00   3.23600000e-01 ...,   0.00000000e+00
+   0.00000000e+00   0.00000000e+00]
+*** Done loading input data into memory (load_var_arrays()) ***
+        Time: 14:53:08
+
+*** Ready to run models ... ***
+    Nutrient forms (parameters) requested:
+    DIN,DIP,DON,DOP,DOC,DSi  PN,PP,POC
+*** Done with dissolved sub-models ***
+        Time: 14:53:08
+*** Done with particulate sub-models ***
+        Time: 14:53:08
+*** Done with 'All-Form' model ***
+        Time: 14:53:08
+*** Done writing output to files (write_var_arrays()) ***
+      ==========================================
+***** GNE Run completed *****
+            Mon, 18 Jan 2010 14:53:16
+
