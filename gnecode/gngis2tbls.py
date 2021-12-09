@@ -72,7 +72,6 @@ def LoadBasinIDArea(doctbl_d, data_d, out_data_d):
     So, this is creating something of an exception...
     '''
     import csv
-    from sets import Set as set
 
     # read csv table and load basinid field
     fp = open(doctbl_d['tblbasins']['filepath'], "rb")
@@ -127,7 +126,7 @@ def CalcBasinStats(doctbl_d, doc_d):
     ValGridCF = "valgridtmp0"
     ZoneGrid   = doctbl_d['grdbasins']['filepath']
     ClAreaGrid = doctbl_d['grdarea']['filepath']
-    print "ZONALSTATS 0:", FPathTmpSpace, ZoneGrid, ClAreaGrid
+    print("ZONALSTATS 0:", FPathTmpSpace, ZoneGrid, ClAreaGrid)
 
     for var in doc_d:
         # perform zonal stats on "value" grids only
@@ -140,7 +139,7 @@ def CalcBasinStats(doctbl_d, doc_d):
         if os.path.exists(outTbl):
             os.remove(outTbl)
 
-        print "ZONALSTATS:", var, ValRawGrid, ValGridItem, outTbl
+        print("ZONALSTATS:", var, ValRawGrid, ValGridItem, outTbl)
 
         # Check for and include ValRawGrid item names other than "VALUE"
         if ValGridItem.upper() != "VALUE":
@@ -159,7 +158,7 @@ def CalcBasinStats(doctbl_d, doc_d):
                 ValGridRun = ValGrid
             else:
                 CFAreaGrid = doctbl_d[doc_d[var]['fieldtype']]['filepath']
-                print "ZONALSTATS Cell Fr grid:", ValGrid, CFAreaGrid
+                print("ZONALSTATS Cell Fr grid:", ValGrid, CFAreaGrid)
                 gp.Times_sa(ValGrid, CFAreaGrid, ValGridCF)
                 # delete the temporary grid
                 gp.Delete_management(ValGrid)
@@ -189,12 +188,11 @@ def BasinStatsToOUTvarArrays(doctbl_d, doc_d, data_d, in_data_d):
     ''' ....
     '''
     import os, os.path
-    from operator import itemgetter
-    from sets import Set as set
+    from operator import itemgetter    
     import dbf
 
     # function to extract column i from 2D sequence; eg: acol2 = GetCol(a, 2)
-    GetCol = lambda seq, i: map(itemgetter(i), seq)
+    GetCol = lambda seq, i: list(map(itemgetter(i), seq))
     
     NoData = 0.0
     ExpFldsIdx = {'ID':0, 'mean':6, 'sum':8}
@@ -233,11 +231,11 @@ def BasinStatsToOUTvarArrays(doctbl_d, doc_d, data_d, in_data_d):
         # NoData value for missing BasinID's, then sort by BasinID
         basids = set(GetCol(BasFlds, IDIdx))
         missingbasids = setBasinID.difference(basids)
-        BasFlds.extend(zip(missingbasids, [NoData] * len(missingbasids)))
+        BasFlds.extend(list(zip(missingbasids, [NoData] * len(missingbasids))))
         BasFlds.sort(key=itemgetter(IDIdx))
 
         # Convert to float32 numpy array and load into OUT
-        print "    ", var, type(BasFlds), len(BasFlds), len(BasFlds[0]), BasFlds[0:5]
+        print("    ", var, type(BasFlds), len(BasFlds), len(BasFlds[0]), BasFlds[0:5])
         data_d[var] = ny.array(GetCol(BasFlds, 1), dtype="float32")
 
         # For normal arrays (not basin areas), numpy-divide by basin area
@@ -252,4 +250,4 @@ if __name__ == '__main__':
     gncfg.cfg_simple_sections("GIS2TBLS")
     gncfg.PopulateCfgVars(fname_cfg_var, "GIS2TBLS")
 
-    print __version__
+    print(__version__)

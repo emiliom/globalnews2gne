@@ -40,7 +40,6 @@ import sys
 import os.path
 import getopt
 from operator import itemgetter
-from sets import Set as set
 import time
 
 # Import Global NEWS Environment ("gne") modules
@@ -48,9 +47,9 @@ import time
 # subfolder, but they may also be placed at the same base folder
 __gne = os.path.join('.', 'gnecode')
 if os.path.exists(__gne): sys.path.insert(0, __gne)
-from gncfg import *
-import gncore
-import gngis2tbls
+from gnecode.gncfg import *
+import gnecode.gncore as gncore
+import gnecode.gngis2tbls as gngis2tbls
 
 __version__ = '$Revision: 2010-01-18$'
 

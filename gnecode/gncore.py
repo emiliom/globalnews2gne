@@ -72,9 +72,9 @@ def read_cfgfile(fname_cfg, sect_prefix):
     For section names [prefix]: cfg_dict[option] = optionvalue
     """
     import os, os.path
-    import ConfigParser
+    import configparser
 
-    cfg = ConfigParser.SafeConfigParser()
+    cfg = configparser.SafeConfigParser()
     # Prevent default behavior of returning options in all-lowercase
     cfg.optionxform = str
 
@@ -90,11 +90,11 @@ def read_cfgfile(fname_cfg, sect_prefix):
                 cfg_dict[ssuf] = {}
                 for opt,val in cfg.items(section):
                     cfg_dict[ssuf][opt] = val
-                    if FLAGS['verbose']: print " %s[%s][%s] = %s" %(sect_prefix, ssuf, opt, cfg_dict[ssuf][opt])
+                    if FLAGS['verbose']: print(" %s[%s][%s] = %s" %(sect_prefix, ssuf, opt, cfg_dict[ssuf][opt]))
         elif section == sect_prefix:
             for opt,val in cfg.items(section):
                 cfg_dict[opt] = val
-                if FLAGS['verbose']: print " %s[%s] = %s" %(section, opt, cfg_dict[opt])
+                if FLAGS['verbose']: print(" %s[%s] = %s" %(section, opt, cfg_dict[opt]))
 
     
     return cfg_dict
@@ -104,9 +104,9 @@ def parse_cfg_ccal(ccal_cfg_d, ccal_d):
     """ Populate global CCAL dictionary
     """
 
-    for k1 in ccal_cfg_d.keys():
+    for k1 in list(ccal_cfg_d.keys()):
         ccal_d[k1] = {}
-        for k2,val in ccal_cfg_d[k1].items():
+        for k2,val in list(ccal_cfg_d[k1].items()):
             ccal_d[k1][k2] = float(val)
 
 
@@ -122,10 +122,10 @@ def parse_cfg_modelrun(mrun_cfg_d, run_d):
         # entry could be a single parameter or a parameter group
         if vallst[0] in PGRP['all']:
             run_d['p'] = vallst
-        elif vallst[0] in PGRP.keys():
+        elif vallst[0] in list(PGRP.keys()):
             run_d['p'] = list(PGRP[vallst[0]]) # convert tuple to list
         else:
-            if FLAGS['verbose']: print "Generic var name: parameter sepecifier %s not valid" % (vallst[0])
+            if FLAGS['verbose']: print("Generic var name: parameter sepecifier %s not valid" % (vallst[0]))
     else:
         run_d['p'] = vallst
 
@@ -138,7 +138,7 @@ def parse_cfg_modelrun(mrun_cfg_d, run_d):
             run_d['param_ord'].append(int(v) - 1)
 
     
-    if FLAGS['verbose']: print run_d
+    if FLAGS['verbose']: print(run_d)
 
 
 def parse_cfg_basrea(basarea_cfg_d, basarea_d):
@@ -154,7 +154,7 @@ def parse_cfg_basrea(basarea_cfg_d, basarea_d):
         basarea_d['BasinAreas'] = \
             {'FLAG':True, 'outtable':vallst[0], 'varname':vallst[1]}
 
-    if FLAGS['verbose']: print "BASAREA:  ", basarea_cfg_d['BasinAreas']
+    if FLAGS['verbose']: print("BASAREA:  ", basarea_cfg_d['BasinAreas'])
 
 
 def parse_cfg_tbls(tbls, strsubs, doctbl_d, doctype):
@@ -169,12 +169,12 @@ def parse_cfg_tbls(tbls, strsubs, doctbl_d, doctype):
     vlist_len = {"INGIS":2, "IN":2, "OUT":2}
 
     # what's the difference between .items() and .iteritems()?
-    for tblname,val in tbls.items():
+    for tblname,val in list(tbls.items()):
         vlist = val.split("|")
     
         # later, the basis for doctype == "OUT" might be made optional?
         if len(vlist) != vlist_len[doctype]:
-            if FLAGS['verbose']: print "%s: Tables must have exactly %d arguments.\n" %(tblname, vlist_len[doctype])
+            if FLAGS['verbose']: print("%s: Tables must have exactly %d arguments.\n" %(tblname, vlist_len[doctype]))
             # Now exit.
     
         # add empty tblname key to dictionary
@@ -187,14 +187,14 @@ def parse_cfg_tbls(tbls, strsubs, doctbl_d, doctype):
         strblock = {}
         if ParseStrBlock("()", vlist[0], strblock):
             doctbl_d[tblname]['filepath'] = strsubs[strblock['b']] + strblock['f']
-            if FLAGS['verbose']: print tblname,doctbl_d[tblname]['filepath']
+            if FLAGS['verbose']: print(tblname,doctbl_d[tblname]['filepath'])
         else:
             doctbl_d[tblname]['filepath'] = vlist[0]
         
         if doctype == "IN":
             # test to see if the file exists
             if not os.path.exists(doctbl_d[tblname]['filepath']):
-                if FLAGS['verbose']: print "Table does not exist: %s\n" %(doctbl_d[tblname]['filepath'])
+                if FLAGS['verbose']: print("Table does not exist: %s\n" %(doctbl_d[tblname]['filepath']))
                 # Now exit.
 
             # Add basis item (check for valid values)
@@ -202,8 +202,8 @@ def parse_cfg_tbls(tbls, strsubs, doctbl_d, doctype):
             if vlist[1] in basis_valid:
                 doctbl_d[tblname]['basis'] = vlist[1]
             else:
-                if FLAGS['verbose']: print "Table %s: basis '%s' is not recognized; must be (%s).\n" \
-                      %(tblname, vlist[1], ','.join(basis_valid))
+                if FLAGS['verbose']: print("Table %s: basis '%s' is not recognized; must be (%s).\n" \
+                      %(tblname, vlist[1], ','.join(basis_valid)))
                 # Now exit.
         # OUT tables can only have a 'basin' basis; for now, just ignore entry in cfg
         elif doctype == "OUT":
@@ -222,7 +222,7 @@ def parse_cfg_vars(vars, doctbl_d, doc_d, doctype):
     vlist_len = {"IN":3, "OUT":4, "INGIS":3}
     dattype   = {'IN':'tbl', 'OUT':'tbl', 'INGIS':'gis'}
 
-    for varname,val in vars.items():
+    for varname,val in list(vars.items()):
         vlist = val.split("|")
 
         if len(vlist) != vlist_len[doctype]:
@@ -230,8 +230,8 @@ def parse_cfg_vars(vars, doctbl_d, doc_d, doctype):
             if doctype == "OUT" and len(vlist) == vlist_len[doctype] - 1:
                 vlist.append('Y')
             else:
-                if FLAGS['verbose']: print "%s: Variable must have exactly %d arguments.\n" \
-                                 %(varname, vlist_len[doctype])
+                if FLAGS['verbose']: print("%s: Variable must have exactly %d arguments.\n" \
+                                 %(varname, vlist_len[doctype]))
             # Now exit.
 
         strblock = {}
@@ -250,17 +250,17 @@ def parse_cfg_vars(vars, doctbl_d, doc_d, doctype):
                         if params_in[0] in PGRP['all']:
                             # it's already a simple parameter name, so use as-is
                             params = params_in
-                        elif params_in[0] in PGRP.keys():
+                        elif params_in[0] in list(PGRP.keys()):
                             # extract parameters from param group, convert to list
                             params = list(PGRP[params_in[0]])
                         else:
-                            print "Generic var name: parameter sepecifier %s not valid" % (params_in[0])
+                            print("Generic var name: parameter sepecifier %s not valid" % (params_in[0]))
                     else:
                         # should do error check, to ensure parameters are valid
                         params = params_in
                 else:
-                    print "Error with generic var name!"
-                if FLAGS['verbose']: print strblock['b'],params, "\n"
+                    print("Error with generic var name!")
+                if FLAGS['verbose']: print(strblock['b'],params, "\n")
 
                 # Parse and expand fieldname, if it, too, is generic
                 # A generic varname doesn't require a corresponding generic fieldname
@@ -271,7 +271,7 @@ def parse_cfg_vars(vars, doctbl_d, doc_d, doctype):
                 else:
                     IsGenericFldName = False
                     if FLAGS['verbose']:
-                      print ">WARNING: For generic var name, field name is not generic"
+                      print(">WARNING: For generic var name, field name is not generic")
 
                 # limit params list by actual model run parameters in RUN['p']
                 params = [p for p in PGRP['all'] if p in params and p in RUN['p']]
@@ -305,7 +305,7 @@ def parse_cfg_vars(vars, doctbl_d, doc_d, doctype):
 
     if FLAGS['verbose']:
         for tblname in sorted(doctbl_d):
-            print tblname, doctbl_d[tblname]['varlst']
+            print(tblname, doctbl_d[tblname]['varlst'])
 
 
 def doctbld_docd_assign(dattype, doctbld, docd, varname, srctable, fldname, \
@@ -322,21 +322,21 @@ def doctbld_docd_assign(dattype, doctbld, docd, varname, srctable, fldname, \
         if fldtype in ('double', 'int'):
             docd[varname]['fieldtype'] = fldtype
         else:
-            print "Variable %s: fieldtype '%s' is not recognized; must be 'double' or 'int'.\n" %(varname, fldtype)
+            print("Variable %s: fieldtype '%s' is not recognized; must be 'double' or 'int'.\n" %(varname, fldtype))
             # Now exit.
     elif dattype == "gis": # here, fldtype is really the cell fraction grid, if any
         if fldtype == 'all' or fldtype.startswith('clfr'):
             docd[varname]['fieldtype'] = fldtype
         else:
-            print "Variable %s: fieldtype '%s' is not recognized; must be 'all' or 'clfr*'.\n" %(varname, fldtype)
+            print("Variable %s: fieldtype '%s' is not recognized; must be 'all' or 'clfr*'.\n" %(varname, fldtype))
             # Now exit.
 
     # add variable to corresponding variable list for table(s)
     for tblname in docd[varname]['srctable']: 
         doctbld[tblname]['varlst'].append(varname)
 
-    if FLAGS['verbose']: print "docd assignments: ",varname,docd[varname]['genvarname'], \
-        docd[varname]['srctable'],docd[varname]['fieldname'],docd[varname]['fieldtype']
+    if FLAGS['verbose']: print("docd assignments: ",varname,docd[varname]['genvarname'], \
+        docd[varname]['srctable'],docd[varname]['fieldname'],docd[varname]['fieldtype'])
 
 
 def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
@@ -345,7 +345,6 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
     Variables will be numpy arrays.
     """
     import csv
-    from sets import Set as set
 
     # =====================================================
     # LOAD AND HANDLE BasinID VARIABLE
@@ -368,11 +367,11 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
     # Copy to OUT[id_var] numpy array
     out_data_d[id_var] = data_d[id_var]
     
-    if FLAGS['verbose']: print "  Number of basins to be processed: %d" % data_d[id_var].size
+    if FLAGS['verbose']: print("  Number of basins to be processed: %d" % data_d[id_var].size)
 
     # =====================================================
     # LOAD ALL OTHER INPUT VARIABLES, STEPPING THROUGH INDIVIDUAL INPUT TABLES
-    for tbl in doctbl_d.keys():
+    for tbl in list(doctbl_d.keys()):
         if len(doctbl_d[tbl]['varlst']) > 0:
             # Initialize data_d dict with all its keys (variables), as numpy arrays
             # (maybe this data_d initialization should be done in parse_cfg_vars()?
@@ -391,12 +390,12 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
             for var in doctbl_d[tbl]['varlst']:
                 if var != id_var: 
                     tbl_fld_var[doc_d[var]['fieldname']] = var
-            if FLAGS['verbose']: print "tbl_fld_var: ", tbl_fld_var
+            if FLAGS['verbose']: print("tbl_fld_var: ", tbl_fld_var)
 
             # Read the first row (field names)
             fp = open(doctbl_d[tbl]['filepath'], "rb")
             fld_names_reader = csv.reader(fp)
-            fld_names = fld_names_reader.next()
+            fld_names = next(fld_names_reader)
             fp.close()
 
             # Set basinid_fld using the header (field names) reader list
@@ -407,7 +406,7 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
             elif id_fldnames_lst[1] in fld_names:
                 basinid_fld = id_fldnames_lst[1]
             else:
-                print "  !!! Input table does not have a valid basin ID column name !!!\n"
+                print("  !!! Input table does not have a valid basin ID column name !!!\n")
 
             # read csv table and load requested fields
             fp = open(doctbl_d[tbl]['filepath'], "rb")
@@ -415,8 +414,8 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
             # SHOULD THERE BE A TEST TO ENSURE THAT ALL REQUESTED FIELDS
             # ARE PRESENT IN THE FILE? OTHERWISE, ABORT WITH ERROR MESSAGE
             for row in csvreader:
-                for fld,v in row.items():
-                    if int(row[basinid_fld]) in setBasinID and fld in tbl_fld_var.keys():
+                for fld,v in list(row.items()):
+                    if int(row[basinid_fld]) in setBasinID and fld in list(tbl_fld_var.keys()):
                         # load requested fields into the data_d dict by
                         # concatenating each row value to the numpy arrays
                         # This test is done for every single row! It may be more
@@ -433,7 +432,7 @@ def load_var_arrays(doctbl_d, doc_d, data_d, out_data_d):
 
             if FLAGS['verbose']: 
                 for var in doctbl_d[tbl]['varlst']: 
-                    print "   ", var, "(", data_d[var].size, "):", data_d[var]
+                    print("   ", var, "(", data_d[var].size, "):", data_d[var])
 
 
 def write_var_arrays(doctbl_d, doc_d, data_d):
@@ -463,10 +462,10 @@ def write_var_arrays(doctbl_d, doc_d, data_d):
             writeseq = []
             # remove vars that were never written out to the OUT dict
             # either by choice or by oversight. Alternatively, write out None?
-            orderedflds = dict(zip(doctbl_d[tbl]['fieldorder'], doctbl_d[tbl]['varlst']))
+            orderedflds = dict(list(zip(doctbl_d[tbl]['fieldorder'], doctbl_d[tbl]['varlst'])))
             for ord,var in sorted(orderedflds.items()): 
-                if data_d.has_key(var) and \
-                doc_d.has_key(var) and doc_d[var]['flgwrite']:
+                if var in data_d and \
+                var in doc_d and doc_d[var]['flgwrite']:
                     fldnameseq.append(doc_d[var]['fieldname'])
                     writeseq.append("data_d['" + var + "']")
 
@@ -502,7 +501,7 @@ def cfg_outvars_order(fname_cfg_var, doctbl_d, doc_d):
         gv = doc_d[var]['genvarname']
         if gv:
             gvpar = doc_d[var]['genvar_p']
-            if genvars_d.has_key(gv):
+            if gv in genvars_d:
                 genvars_d[gv]['p'].append(gvpar)
                 genvars_d[gv]['var'].append(var)
             else:
@@ -512,11 +511,11 @@ def cfg_outvars_order(fname_cfg_var, doctbl_d, doc_d):
 
     # sort lists in the correct relative order using RUN['p'] & RUN['param_ord']
     for gv in genvars_d:
-        if FLAGS['verbose']: print "genvars: ", gv, genvars_d[gv]['p'], genvars_d[gv]['var']
+        if FLAGS['verbose']: print("genvars: ", gv, genvars_d[gv]['p'], genvars_d[gv]['var'])
         genvars_d[gv]['p'].sort(key=lambda p: RUN['param_ord'][RUN['p'].index(p)])
         genvars_d[gv]['var'].sort(key=lambda v: \
                 RUN['param_ord'][RUN['p'].index(doc_d[v]['genvar_p'])])
-        if FLAGS['verbose']: print "genvars sorted: ", gv, genvars_d[gv]['p'], genvars_d[gv]['var']
+        if FLAGS['verbose']: print("genvars sorted: ", gv, genvars_d[gv]['p'], genvars_d[gv]['var'])
 
     # open file, suck in all lines, close file
     f = open(fname_cfg_var, "r")
@@ -645,4 +644,4 @@ if __name__ == '__main__':
     cfg_simple_sections("MODEL")
     PopulateCfgVars(fname_cfg_var, "MODEL")
 
-    print __version__
+    print(__version__)
